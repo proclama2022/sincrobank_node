@@ -1,9 +1,9 @@
 {
-  "name": "nodejs-app",
+  "name": "sincrobank-node",
   "version": "1.0.0",
   "description": "A minimal Node.js web application.",
   "main": "index.js",
-  "author": "alphasec",
+  "author": "proclama",
   "license": "MIT",
    "dependencies": {
   },

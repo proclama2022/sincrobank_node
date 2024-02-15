@@ -5,9 +5,13 @@
   "main": "index.js",
   "author": "proclama",
   "license": "MIT",
-   "dependencies": {
-  },
   "scripts": {
     "start": "node index.js"
+  },
+  "dependencies": {
+    "@vercel/blob": "^0.22.0",
+    "airtable": "^0.12.2",
+    "axios": "^1.6.7",
+    "express": "^4.18.2"
   }
 }

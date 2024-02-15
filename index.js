@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const Airtable = require('airtable');
 const { put } = require('@vercel/blob');
+const { del } = require('@vercel/blob');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -48,10 +49,15 @@ app.post('/files', async (req, res) => {
 
         // Update the record with the new file added to the existing 'pdf' files
         const response = await airtableClient.update(recordId, {
-            'pdf': [...currentPdfFiles, {url: pdfUrl.url}],
+            'pdf': [...currentPdfFiles, {url: pdfUrl.url, filename: `${id}.pdf`}],
             // Assuming you want to replace the 'excel' field with a new file
-            'excel': [...currentExcelFiles, {url: excelUrl.url}]
+            'excel': [...currentExcelFiles, {url: excelUrl.url, filename: `${id}.xlsx`}]
         });
+
+        setTimeout(async () => {
+            await del(pdfUrl.url, { token: 'vercel_blob_rw_RYm0UU5sv1ARmTqu_ILwJWC1HonAq006aMDM7VCsxTGGy9K' });
+            await del(excelUrl.url, { token: 'vercel_blob_rw_RYm0UU5sv1ARmTqu_ILwJWC1HonAq006aMDM7VCsxTGGy9K' });
+        }, 10000); // Delete the files after 10 seconds
 
         console.log('File caricati con successo!', response);
         // Invia la risposta al client

@@ -28,8 +28,8 @@ app.post('/files', async (req, res) => {
         };
 
         // Per gestire i buffer direttamente, assicurati che la risposta sia in formato 'arraybuffer'
-        const pdfResponse = await axios.post('https://web-production-2921.up.railway.app/pdf', postData, { responseType: 'arraybuffer' });
-        const excelResponse = await axios.post('https://web-production-2921.up.railway.app/excel', postData, { responseType: 'arraybuffer' });
+        const pdfResponse = await axios.post('https://sincrobank-python.up.railway.app/pdf', postData, { responseType: 'arraybuffer' });
+        const excelResponse = await axios.post('https://sincrobank-python.up.railway.app/excel', postData, { responseType: 'arraybuffer' });
 
         console.log(pdfResponse.data, excelResponse.data)
 

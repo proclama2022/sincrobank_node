@@ -50,8 +50,8 @@ app.post('/files', async (req, res) => {
         // Update the record with the new file added to the existing 'pdf' files
         const response = await airtableClient.update(recordId, {
             'pdf': [...currentPdfFiles, {url: pdfUrl.url, filename: `${id}.pdf`}],
-            // Assuming you want to replace the 'excel' field with a new file
-            'excel': [...currentExcelFiles, {url: excelUrl.url, filename: `${id}.xlsx`}]
+            'excel': [...currentExcelFiles, {url: excelUrl.url, filename: `${id}.xlsx`}],
+            'Genera lista transazioni': false
         });
 
         setTimeout(async () => {

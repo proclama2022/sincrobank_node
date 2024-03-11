@@ -63,6 +63,9 @@ app.post('/files', async (req, res) => {
         // Invia la risposta al client
         res.status(200).send({ message: 'File caricato con successo!', data: response });
     } catch (error) {
+        airtableClient.update(recordId, {
+            'Genera lista transazioni': false
+        });
         console.error('Si è verificato un errore:', error);
         res.status(500).send('Errore durante il caricamento del file');
     }
